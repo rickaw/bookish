@@ -22,6 +22,20 @@ class BooksController < ApplicationController
     end
   end
 
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    @book = Book.find(params[:id])
+
+    if @book.update(book_params)
+      redirect_to @book
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
   def book_params
     params.require(:book).permit(:title, :author, :ISBN)
