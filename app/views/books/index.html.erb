@@ -1,8 +1,5 @@
 <h1>My books and copies</h1>
 <h2>Books</h2>
-<%#= button_to "New", :action => "add", :controller => :books %>
-<%# button?_to "Add new book", {  action: "add"} %>
-<%#= button_to "New", { action: "add" }, class: "my_class", id: "my_id" %>
 
 <ul>
   <% for book in @books.sort_by{|b| b[:title]} %>
@@ -16,7 +13,11 @@
 
 <h2>Copies</h2>
 <ul>
-  <% for copy in @copies %>
-  <li>Borrower: <%= copy.borrower %>, Book id: <%= copy.book_id %>, <%= copy.dueDate %></li>
+  <% for copy in @copies.sort_by{|c| c[:bookId]} %>
+    <li>
+      <%= link_to copy.borrower, copy %>
+    </li>
   <% end %>
 </ul>
+
+<%= link_to "New copy", new_copy_path %>
