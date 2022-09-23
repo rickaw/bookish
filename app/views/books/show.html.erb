@@ -9,7 +9,7 @@
 <ul>
   <% @book.copies.map do |copy| %>
     <li>
-      <%= copy.borrower %>
+      <%= copy.user.email %>
     </li>
   <% end %>
 </ul>
@@ -19,7 +19,7 @@
   <li>
     <%= form_with model: [@book, @book.copies.build] do |form| %>
       <p>
-        <%= form.hidden_field :borrower, :value => current_user.email %>
+        <%= form.hidden_field :user_id, :value => current_user.id %>
         <%= form.hidden_field :dueDate, :value => "1/1/2023" %>
         <%= form.submit "Borrow" %>
       </p>

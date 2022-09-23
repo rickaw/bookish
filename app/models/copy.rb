@@ -8,9 +8,9 @@ class BookIdValidator < ActiveModel::EachValidator
 end
 
 class Copy < ApplicationRecord
-  validates :borrower, presence: true
   validates :dueDate, presence: true
   validates :book_id, book_id: true
 
   belongs_to :book
+  belongs_to :user
 end

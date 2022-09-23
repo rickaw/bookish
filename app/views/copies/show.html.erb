@@ -1,10 +1,10 @@
 <h1>Copy</h1>
-<p>Borrower: <%= @copy.borrower %></p>
+<p>Borrower: <%= @copy.user.email %></p>
 <p>Due date: <%= @copy.dueDate %></p>
 <p>Book ID: <%= @copy.book_id %></p>
 <p><%= link_to @copy.book.title, book_path(@copy.book) %></p>
 
-<% if current_user.email == @copy.borrower %>
+<% if current_user.email == @copy.user.email %>
   <h2>Actions</h2>
   <ul>
     <li>

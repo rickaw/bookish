@@ -46,6 +46,6 @@ class CopiesController < ApplicationController
 
   private
   def copy_params
-    params.require(:copy).permit(:borrower, :dueDate, :book_id)
+    params.require(:copy).permit(:dueDate, :book_id, :user_id)
   end
 end

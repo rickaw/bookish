@@ -1,8 +1,8 @@
 <%= form_with model: @copy do |form| %>
   <div>
-    <%= form.label :borrower %><br>
-    <%= form.text_field :borrower %>
-    <% @copy.errors.full_messages_for(:borrower).each do |message| %>
+    <%= form.label :user_id %><br>
+    <%= form.text_field :user_id %>
+    <% @copy.errors.full_messages_for(:user_id).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>

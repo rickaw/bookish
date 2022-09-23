@@ -15,8 +15,7 @@
 <ul>
   <% @copies.sort_by{|c| c[:bookId]}.map do |copy| %>
     <li>
-
-      <%= link_to copy.book.title + " borrowed by " + copy.borrower, copy %>
+      <%= link_to copy.book.title + " borrowed by " + copy.user.email, copy %>
     </li>
   <% end %>
 </ul>
