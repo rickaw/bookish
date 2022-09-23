@@ -10,7 +10,10 @@ Rails.application.routes.draw do
 
   # get "books/:id", to: "books#show"
 
-  resources :books
+  resources :books do
+    resources :copies
+  end
+
   resources :copies
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

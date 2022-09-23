@@ -1,8 +1,33 @@
 <h1><%= @book.title %></h1>
+
+<h2>Details</h2>
 <p>Author: <%= @book.author %></p>
 <p>ISBN: <%= @book.ISBN %></p>
 <p>ID: <%= @book.id %></p>
 
+<h2>Borrowers</h2>
+<ul>
+  <% @book.copies.map do |copy| %>
+    <li>
+      <%= copy.borrower %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Actions</h2>
+<ul>
+  <li>
+    <%= form_with model: [@book, @book.copies.build] do |form| %>
+      <p>
+        <%= form.hidden_field :borrower, :value => current_user.email %>
+        <%= form.hidden_field :dueDate, :value => "1/1/2023" %>
+        <%= form.submit "Borrow" %>
+      </p>
+    <% end %>
+  </li>
+</ul>
+
+<h2>Admin Actions</h2>
 <ul>
   <li>
     <%= link_to "Edit", edit_book_path(@book) %>

@@ -28,6 +28,10 @@
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
+
+    <li>
+      <%= link_to "See all books", books_path %>
+    </li>
     <%= yield %>
   </body>
 </html>

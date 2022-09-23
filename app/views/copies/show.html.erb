@@ -2,15 +2,23 @@
 <p>Borrower: <%= @copy.borrower %></p>
 <p>Due date: <%= @copy.dueDate %></p>
 <p>Book ID: <%= @copy.book_id %></p>
+<p><%= link_to @copy.book.title, book_path(@copy.book) %></p>
 
+<% if current_user.email == @copy.borrower %>
+  <h2>Actions</h2>
+  <ul>
+    <li>
+      <%= link_to "Return", copy_path(@copy), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %>
+    </li>
+<% end %>
+  </ul>
+
+<h2>Acmin Actions</h2>
 <ul>
   <li>
     <%= link_to "Edit", edit_copy_path(@copy) %>
-  </li>
-  <li>
-    <%= link_to "Destroy", copy_path(@copy), data: {
-      turbo_method: :delete,
-      turbo_confirm: "Are you sure?"
-    } %>
   </li>
 </ul>

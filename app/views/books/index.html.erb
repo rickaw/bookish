@@ -9,15 +9,16 @@
   <% end %>
 </ul>
 
-<%= link_to "New book", new_book_path %>
+<%#= link_to "New book", new_book_path %>
 
 <h2>Copies</h2>
 <ul>
-  <% for copy in @copies.sort_by{|c| c[:bookId]} %>
+  <% @copies.sort_by{|c| c[:bookId]}.map do |copy| %>
     <li>
-      <%= link_to copy.borrower, copy %>
+
+      <%= link_to copy.book.title + " borrowed by " + copy.borrower, copy %>
     </li>
   <% end %>
 </ul>
 
-<%= link_to "New copy", new_copy_path %>
+<%#= link_to "New copy", new_copy_path %>

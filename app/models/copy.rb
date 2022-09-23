@@ -11,4 +11,6 @@ class Copy < ApplicationRecord
   validates :borrower, presence: true
   validates :dueDate, presence: true
   validates :book_id, book_id: true
+
+  belongs_to :book
 end

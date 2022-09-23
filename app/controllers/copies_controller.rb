@@ -8,14 +8,20 @@ class CopiesController < ApplicationController
   end
 
   def create
-    @copy = Copy.new(copy_params)
-
-    if @copy.save
-      redirect_to books_path
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @book = Book.find(params[:book_id])
+    @book = @book.copies.create(copy_params)
+    redirect_to book_path(@book)
   end
+
+  # def create
+  #   @copy = Copy.new(copy_params)
+  #
+  #   if @copy.save
+  #     redirect_to books_path
+  #   else
+  #     render :new, status: :unprocessable_entity
+  #   end
+  # end
 
   def edit
     @copy = Copy.find(params[:id])
