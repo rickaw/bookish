@@ -1,6 +1,8 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.all
+    @books = Book.search(params[:search])
+
+    # @books = Book.all
     @copies = Copy.all
   end
 
